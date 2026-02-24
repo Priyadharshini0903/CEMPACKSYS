@@ -1,0 +1,128 @@
+﻿@{
+    ViewData["Title"] = "Analytics";
+}
+
+<div class="container mt-4">
+
+    <h3>Weight Analytics Dashboard</h3>
+
+    <div class="row mb-4">
+        <div class="col-md-3">
+            <input type="datetime-local" id="fromDate" class="form-control" />
+        </div>
+
+        <div class="col-md-3">
+            <input type="datetime-local" id="toDate" class="form-control" />
+        </div>
+
+        <div class="col-md-2">
+            <button class="btn btn-primary w-100" onclick="loadDashboard()">Load Graph</button>
+        </div>
+    </div>
+
+    <!-- KPI Section -->
+    <div class="row mb-4" id="kpiSection" style="display:none;">
+        <div class="col-md-4">
+            <div class="card shadow text-center">
+                <div class="card-body">
+                    <h6>Total Tons</h6>
+                    <h4 id="totalTons"></h4>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow text-center">
+                <div class="card-body">
+                    <h6>Average Weight</h6>
+                    <h4 id="avgWeight"></h4>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow text-center">
+                <div class="card-body">
+                    <h6>Total Records</h6>
+                    <h4 id="totalRecords"></h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Charts Row -->
+    <div class="row">
+
+        <div class="col-md-6">
+            <div class="card shadow mb-4">
+                <div class="card-body">
+                    <h5>Tons Discharged Per Hour</h5>
+                    <canvas id="tonsChart" style="height:300px"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card shadow mb-4">
+                <div class="card-body">
+                    <h5>Average Weight Per Spout</h5>
+                    <canvas id="spoutChart" style="height:300px"></canvas>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+
+        let tonsChart;
+        let spoutChart;
+
+        async function loadDashboard() {
+
+            const from = document.getElementById("fromDate").value;
+            const to = document.getElementById("toDate").value;
+
+            const response = await fetch(`/Reports/GetDashboardData?from=${from}&to=${to}`);
+            const data = await response.json();
+
+            document.getElementById("kpiSection").style.display = "flex";
+            document.getElementById("totalTons").innerText = data.totalTons.toFixed(2);
+            document.getElementById("avgWeight").innerText = data.avgWeight.toFixed(2);
+            document.getElementById("totalRecords").innerText = data.totalRecords;
+
+            if (tonsChart) tonsChart.destroy();
+            if (spoutChart) spoutChart.destroy();
+
+            tonsChart = new Chart(document.getElementById("tonsChart"), {
+                type: 'line',
+                data: {
+                        labels: data.hours,
+                        datasets: [{
+                        label: 'Tons',
+                        data: data.tonsPerHour,
+                        borderWidth: 2,
+                        fill: false
+                    }]
+                }
+            });
+
+            spoutChart = new Chart(document.getElementById("spoutChart"), {
+                type: 'bar',
+                data: {
+                        labels: data.spouts,
+                        datasets: [{
+                        label: 'Avg Weight',
+                        data: data.avgWeightPerSpout,
+                        borderWidth: 1
+                    }]
+                }
+            });
+        }
+    </script>
+}

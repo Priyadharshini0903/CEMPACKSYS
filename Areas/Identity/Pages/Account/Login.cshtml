@@ -1,0 +1,43 @@
+﻿@page
+@model LoginModel
+@{
+    ViewData["Title"] = "Sign In";
+}
+
+<div class="login-container">
+    <div class="login-box">
+        <div class="text-center mb-4">
+            <h2 class="brand-title">CEMPACKSYS</h2>
+            <p class="subtitle">Sign in to your account</p>
+        </div>
+
+        <form method="post">
+            <div class="mb-3">
+                <input asp-for="Input.Email" class="form-control modern-input" placeholder="Email" />
+                <span asp-validation-for="Input.Email" class="text-danger small"></span>
+            </div>
+
+            <div class="mb-3">
+                <input asp-for="Input.Password" class="form-control modern-input" placeholder="Password" />
+                <span asp-validation-for="Input.Password" class="text-danger small"></span>
+            </div>
+
+            <div class="form-check mb-3 text-white">
+                <input asp-for="Input.RememberMe" class="form-check-input" />
+                <label asp-for="Input.RememberMe" class="form-check-label"></label>
+            </div>
+
+            <button type="submit" class="btn modern-btn w-100">
+                Sign In
+            </button>
+        </form>
+
+        <div class="text-center mt-3">
+            <a asp-page="./Register" class="register-link">Create new account</a>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,23 @@
+[
+  {
+    "ContainingType": "CEMPACKSYS.Controllers.WeightController",
+    "Method": "GetWeight",
+    "RelativePath": "api/Weight/get",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "packer",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "spout",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

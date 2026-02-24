@@ -1,0 +1,96 @@
+﻿@{
+    ViewData["Title"] = "Reports";
+}
+
+<div class="container mt-4">
+
+    <h3>Weight Reports</h3>
+
+    <div class="row mb-3">
+        <div class="col-md-4">
+            <label>From</label>
+            <input type="datetime-local" id="fromDate" class="form-control" />
+        </div>
+
+        <div class="col-md-4">
+            <label>To</label>
+            <input type="datetime-local" id="toDate" class="form-control" />
+        </div>
+        <div class="col-md-4">
+            <label>Shift</label>
+            <select id="shift" class="form-control">
+                <option value="">All</option>
+                <option value="A">Shift A (06-14)</option>
+                <option value="B">Shift B (14-22)</option>
+                <option value="C">Shift C (22-06)</option>
+            </select>
+        </div>
+        <div class="col-md-4 mt-4">
+            <button class="btn btn-primary" onclick="loadReport()">View</button>
+            <button class="btn btn-success" onclick="downloadExcel()">Excel</button>
+            <button class="btn btn-danger" onclick="downloadPDF()">PDF</button>
+            <button class="btn btn-info" onclick="window.location.href='/Reports/Analytics'">
+                Go to Analytics
+            </button>
+        </div>
+    </div>
+
+    <table class="table table-bordered text-center" id="reportTable">
+        <thead class="table-dark">
+            <tr>
+                <th>Packer</th>
+                <th>Spout</th>
+                <th>Weight</th>
+                <th>Time</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+
+@section Scripts {
+    <script>
+
+        async function loadReport() {
+
+            const from = document.getElementById("fromDate").value;
+            const to = document.getElementById("toDate").value;
+            const shift = document.getElementById("shift").value;
+
+            const response = await fetch(`/Reports/GetReport?from=${from}&to=${to}&shift=${shift}`);
+            // const response = await fetch(`/Reports/GetReport?from=${from}&to=${to}`);
+            const data = await response.json();
+
+            const tbody = document.querySelector("#reportTable tbody");
+            tbody.innerHTML = "";
+
+            data.forEach(item => {
+                tbody.innerHTML += `
+                    <tr>
+                        <td>${item.packerNo}</td>
+                        <td>${item.spoutNo}</td>
+                        <td>${Number(item.weight).toFixed(2)}</td>
+                        <td>${new Date(item.receivedAt).toLocaleString()}</td>
+                    </tr>`;
+            });
+        }
+
+        function downloadExcel() {
+            const from = document.getElementById("fromDate").value;
+            const to = document.getElementById("toDate").value;
+            window.location = `/Reports/ExportExcel?from=${from}&to=${to}`;
+        }
+
+        function downloadPDF()
+         {
+             const from = document.getElementById("fromDate").value;
+             const to = document.getElementById("toDate").value;
+             const shift = document.getElementById("shift").value;
+
+             window.location = `/ Reports / ExportPDF ? from =${ from}
+             &to =${ to}
+             &shift =${ shift}`;
+         }
+
+    </script>
+}

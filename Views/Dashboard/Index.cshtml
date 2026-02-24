@@ -1,0 +1,97 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="container mt-5">
+
+    <!-- Title Section -->
+    <div class="text-center mb-4">
+        <h2 class="brand-title">CEMPACKSYS Dashboard</h2>
+        <p class="subtitle">Production Summary Overview</p>
+    </div>
+
+    <!-- Table Section -->
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped text-center">
+            <thead class="table-dark">
+                <tr>
+                    <th>SI NO</th>
+                    <th>PACKER NO</th>
+                    <th>SPOUT NO</th>
+                    <th>WEIGHT</th>
+                    <th>DATETIME</th>
+                </tr>
+            </thead>
+            <tbody>                                
+                    @for (int i = 1; i <= 8; i++)
+                    {
+                        <tr>
+                            <td>@i</td>
+                            <td>@("1")</td>
+                            <td>@("S-"+i)</td>
+                        <td id="weight-@i"></td>
+                        <td id="datetime-@i"></td>
+                        </tr>
+                        }
+                
+            </tbody>
+        </table>
+        @section Scripts {
+            <script>
+
+                async function requestWeight(packer, spout) {
+
+                    try {const response = await fetch(`/api/weight/get?packer=${packer}&spout=${spout}`);
+                                        if (!response.ok) {
+                            throw new Error("Server error");
+                        }
+
+                    const data = await response.json();
+
+                    document.getElementById(`weight-${spout}`).innerText = Number(data.weight).toFixed(2);
+
+                    document.getElementById(`datetime-${spout}`).innerText =new Date(data.receivedAt).toLocaleString();
+
+                    } catch (error) {
+                        console.error("Error:", error);
+                    }
+                }
+             
+                  function loadAllWeights() {
+                    for (let i = 1; i <= 8; i++) {
+                        requestWeight(1, i);
+                    }
+                }
+
+                function startTimer() {
+                    loadAllWeights();
+                    intervalId = setInterval(loadAllWeights, 3000);
+                }
+
+                function stopTimer() {
+                    if (intervalId) {
+                        clearInterval(intervalId);
+                        intervalId = null;
+                    }
+                }
+
+                // Start when page loads
+                window.onload = startTimer;
+
+                // Stop when page unloads (user leaves)
+                window.onbeforeunload = stopTimer;
+            </script> 
+        }
+    </div>
+
+    <!-- Button Section -->
+   <div class="text-center mt-4">
+    <a asp-controller="Reports"
+       asp-action="Index"
+       class="btn btn-primary btn-lg">
+        View Report
+    </a>
+</div>
+
+
+</div>

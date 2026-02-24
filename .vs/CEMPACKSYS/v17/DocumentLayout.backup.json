@@ -1,0 +1,69 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\ADMIN\\Desktop\\Git Learning\\CEMPACKSYS\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{BEFCA966-F644-4368-95CD-C4E84D9E8697}|CEMPACKSYS.csproj|c:\\users\\admin\\desktop\\git learning\\cempacksys\\controllers\\reportscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BEFCA966-F644-4368-95CD-C4E84D9E8697}|CEMPACKSYS.csproj|solutionrelative:controllers\\reportscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BEFCA966-F644-4368-95CD-C4E84D9E8697}|CEMPACKSYS.csproj|c:\\users\\admin\\desktop\\git learning\\cempacksys\\views\\reports\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{BEFCA966-F644-4368-95CD-C4E84D9E8697}|CEMPACKSYS.csproj|solutionrelative:views\\reports\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BEFCA966-F644-4368-95CD-C4E84D9E8697}|CEMPACKSYS.csproj|c:\\users\\admin\\desktop\\git learning\\cempacksys\\views\\reports\\analytics.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{BEFCA966-F644-4368-95CD-C4E84D9E8697}|CEMPACKSYS.csproj|solutionrelative:views\\reports\\analytics.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ReportsController.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\Git Learning\\CEMPACKSYS\\Controllers\\ReportsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ReportsController.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\Git Learning\\CEMPACKSYS\\Controllers\\ReportsController.cs",
+              "RelativeToolTip": "Controllers\\ReportsController.cs",
+              "ViewState": "AgIAAJoAAAAAAAAAAAAswLAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-24T04:24:24.169Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\Git Learning\\CEMPACKSYS\\Views\\Reports\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Reports\\Index.cshtml",
+              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\Git Learning\\CEMPACKSYS\\Views\\Reports\\Index.cshtml",
+              "RelativeToolTip": "Views\\Reports\\Index.cshtml",
+              "ViewState": "AgIAADoAAAAAAAAAAAAwwEsAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-24T04:23:21.674Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Analytics.cshtml",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\Git Learning\\CEMPACKSYS\\Views\\Reports\\Analytics.cshtml",
+              "RelativeDocumentMoniker": "Views\\Reports\\Analytics.cshtml",
+              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\Git Learning\\CEMPACKSYS\\Views\\Reports\\Analytics.cshtml",
+              "RelativeToolTip": "Views\\Reports\\Analytics.cshtml",
+              "ViewState": "AgIAABEAAAAAAAAAAAAwwDEAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-24T04:22:27.907Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
