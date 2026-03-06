@@ -8,6 +8,7 @@ The system collects and visualizes packer and spout weight data, helping plant o
 It provides both data tables and analytical dashboards to support operational monitoring and decision-making.
 
 🎯 Key Features
+
 📊 Production Data Monitoring
 
 Displays real-time packing data including:
@@ -59,6 +60,7 @@ Displays weight distribution across multiple spouts of the packing machine to de
 Users can select custom date and time ranges to analyze production data within specific operational periods.
 
 🖥 System Modules
+
 1️⃣ Data Monitoring Module
 
 • Displays live production data in a structured table for quick inspection.
